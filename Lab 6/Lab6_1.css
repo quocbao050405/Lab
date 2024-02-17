@@ -1,0 +1,77 @@
+
+/*The styles for the body*/
+body {
+	width: 800px;
+	background-color: white;
+
+	margin: 0 auto;
+	border-radius: 5px 5px 5px 5px;	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 120%;
+
+}
+/*Style for header*/
+header img {
+	float: left;
+	margin-right: 1em;
+
+	}
+header {
+	padding: .25em 0 .5em .5em;
+}
+header h2 {
+	font-size: 205%;
+  color: orange;
+	margin: 0;
+  font-style: italic;
+  text-shadow: 2px 2px 5px black;
+	}
+header h3 {
+	font-size: 120%;
+	padding-left: 1em;
+	}		
+
+	
+/*Styles for the body*/
+
+section{
+	width: 805px; 
+	float: left;
+}
+
+section h2{
+	font-size: 130%;
+	}
+
+section h1{
+	font-size: 130%;
+	margin: 0;
+  font-weight: bold;
+}	
+li{
+  color: orange;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+ul{
+	padding-left: 4em;
+
+}
+
+section h1:first-child::first-letter { font-size: 200%}
+
+a:link, a:visited {color: orange; font-weight: bold;}
+
+a:hover, a:focus {color:green}
+
+
+
+/*Styles for the Footer*/
+
+footer {
+	font-size: 85%;
+	text-align: center;
+	border-width: 3px 0px 0px 0px;
+	padding: 150px;
+	}
