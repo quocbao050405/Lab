@@ -32,6 +32,7 @@
         // This is a function to find a product by its ID
         function findProduct(id) {
             //If the productID exist, it will print details about that product
+            //hasOwnProperty will check if the id in the inventory
             if (inventory.hasOwnProperty(id)) {
                 console.log("Product found:");
                 console.log("ID: " + id + ", Name: " + inventory[id].name + ", Quantity: " + inventory[id].quantity);
