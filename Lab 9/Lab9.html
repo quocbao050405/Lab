@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <h2> Lab9</h2>
+</head>
+
+<body>
+    <script>
+        // I create an empty inventory object
+        let inventory = {};
+
+        // This is a function to add a product to the inventory
+        function addProduct(id, name, quantity) {
+            // Add the product to the inventory. This mean in each inventory[id] will have these attribute.
+            inventory[id] = {
+                name,
+                quantity
+            };
+            console.log("Product with ID " + id + " added to inventory.");
+        }
+
+        // This is a function to display the current inventory
+        function displayInventory() {
+            console.log("Current Inventory:");
+            //This for in loop is used for loop through all the properties in the inventory and will print each property detail to the console
+            for (let id in inventory) {
+                console.log("ID: " + id + ", Name: " + inventory[id].name + ", Quantity: " + inventory[id].quantity);
+            }
+        }
+
+        // This is a function to find a product by its ID
+        function findProduct(id) {
+            //If the productID exist, it will print details about that product
+            if (inventory.hasOwnProperty(id)) {
+                console.log("Product found:");
+                console.log("ID: " + id + ", Name: " + inventory[id].name + ", Quantity: " + inventory[id].quantity);
+            }
+            //If the productID not exist, it will print not found to console
+            else {
+                console.log("Product with ID " + id + " not found.");
+            }
+        }
+
+        // Ex:
+        //I add product to inventory by passing value for these parameter in addProduct
+        addProduct("1", "Product 1", 10);
+        addProduct("2", "Product 2", 5);
+        addProduct("3", "Product 3", 8);
+        //Call function displayInventory which will print output to console
+        displayInventory();
+        //Passing productID to findProduct funcrion to print details about it.
+        findProduct("2");
+        findProduct("4");
+
+    </script>
+</body>
+
+</html>
