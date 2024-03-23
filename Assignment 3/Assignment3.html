@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <h2> Assignment3</h2>
+</head>
+
+<body>
+    <div id="menu">
+        <h3>Inventory Tracker Menu:</h3>
+        <!--I add the function to each button and each function will be call if user click on the specific button which is "onclick"-->
+        <button onclick="addProduct()">Add Product</button>
+        <button onclick="removeProduct()">Remove Product</button>
+        <button onclick="displayInventory()">Display Inventory</button>
+        <button onclick="calculateTotalValue()">Calculate Total Value</button>
+    </div>
+    <script>
+        // I create(initialize) an empty inventory Object
+        let inventory = {};
+
+        // This is some Initial Products that is already exist in the inventory
+        inventory["P001"] = { name: "Shirt", price: 19.99, quantity: 10 };
+        inventory["P002"] = { name: "Hat", price: 14.99, quantity: 5 };
+
+        // Add Product Function
+        function addProduct() {
+            //I prompt for user input ( for price must be set to float"decimal" and  integer for quantity bc quantity can't have 3.5 or things similar like that )
+            let id = prompt("Enter Product ID: ");
+            let name = prompt("Enter Product Name: ");
+            let price = parseFloat(prompt("Enter Product Price: "));
+            let quantity = parseInt(prompt("Enter Product Quantity: "));
+            // This will add the new product to the inventory object.
+            inventory[id] = { 
+                name, 
+                price, 
+                quantity 
+            };
+            //This will print the product has been add to console
+            console.log(`${name} (ID: ${id}) has been added to the inventory.`);
+        }
+
+        // Remove Product Function
+        function removeProduct() {
+            //I asked for productID to remove that product
+            let id = prompt("Enter Product ID to Remove: ");
+            //If the productID exist, it will "delete" that product
+            //hasOwnProperty will check if the id in the inventory
+            if (inventory.hasOwnProperty(id)) {
+                delete inventory[id];
+                console.log(`Product with ID: ${id} has been removed.`);
+            } 
+            //If the productID not exist, it will print not found to console( can use console.log but I want to make it more noticing for user so I use error)
+            else {
+                console.error("Product not found in inventory.");
+            }
+        }
+
+        // Display Inventory Function
+        function displayInventory() {
+            console.log("Current Inventory:");
+            //This for in loop is used for loop through all the properties in the inventory and will print each property detail to the console
+            for (id in inventory) {
+                console.log("ID: " + id + ", Name: " + inventory[id].name + ", Quantity: " + inventory[id].quantity);
+            }
+        }
+
+        // Calculate Total Value Function
+        function calculateTotalValue() {
+            //I initialize total(using 'let') and set it to 0 which will hold value later
+            let total = 0;
+            //This for in loop is used for loop through all the properties in the inventory and will do the calculation for each iteration
+            //Then it will add straight to total
+            for (id in inventory) {
+                total += inventory[id].price * inventory[id].quantity;
+            }
+            // I print the value to console and round it up to 2 decimal by using toFixed()
+            console.log(`Total Inventory Value: $${total.toFixed(2)}`);
+            //Then it will call the function checkLowStock which check for any product lower than 5 and alert user
+            checkLowStock();
+        }
+
+        // Low Stock Alert Function 
+        //I can make an "Check Low Stock" button and make it call checkLowStock function(onclick) instead of being called in totalvalue function 
+        // I just simply want to do like this
+        function checkLowStock() {
+            //I create a lowQuantity object which will let user know if certain product quantity is lower than it
+            let lowQuantity = 5;
+            console.log("Low Stock Products:");
+            for ( id in inventory) {
+                //If the productID quantity < lowQuantity(5) then it will details about that product  (Can set straight to 5 instead of create an object and compare it value but this will be more organizing)
+                if (inventory[id].quantity < lowQuantity) {
+                    console.log(` - ${inventory[id].name} (ID: ${id}) - Quantity: ${inventory[id].quantity}`);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
