@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        div {
+            border: 2px solid #ff0000;
+            width: 350px;
+            padding-bottom: 35px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <b>Country:</b>
+        <span>CANADA</span><br>
+        <b>Capital:</b>
+        <span id="capital">OTTAWA</span><br>
+        <input type="button" onclick="hide()" value="Hide capital name" /><br>
+        <input type="button" onclick="show()" value="Show capital name" /><br>
+        <input type="button" onclick="showHide()" value="Toggle" /><br>
+        <b>
+            <p onmouseover="change1(this)" onmouseout="removeColor(this)">Hover on this paragraph for Yellow</p>
+        </b>
+        <b>
+            <p onclick="change2(this)">Click on this paragraph for Green example.</p>
+        </b>
+    </div>
+    <script type="text/javascript">
+        let cap = document.getElementById("capital");
+        function show() {
+            cap.style.display = "block";
+        }
+        function hide() {
+            cap.style.display = "none";
+        }
+        function showHide() {
+            if (cap.style.display == "block") {
+                hide();
+            } else {
+                show();
+            }
+        }
+        //Hover on this paragraph for Yellow
+        function change1(p) {
+            p.style.backgroundColor = "yellow";
+        }
+        function removeColor(p) {
+            p.style.backgroundColor = "";
+        }
+        //Click on this paragraph for Green example.
+        function change2(p) {
+            if (p.style.backgroundColor === "green") {
+                p.style.backgroundColor = "";
+            } else {
+                p.style.backgroundColor = "green";
+            }
+        }
+    </script>
+</body>
+</html>
